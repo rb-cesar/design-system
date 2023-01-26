@@ -1,0 +1,149 @@
+import { Canvas, Meta, Source, Story, ArgsTable } from '@storybook/addon-docs'
+import Button from './button'
+
+# Button
+
+<Meta title="design/button" component={Button} />
+
+export const Template = args => <Button {...args} />
+
+<Canvas>
+  <Story
+    name="button"
+    args={{
+      color: 'primary',
+      children: 'Button',
+      variant: 'filled',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="button" />
+
+__Filled__
+
+<Canvas>
+  <Story
+    name="filled-primary"
+    args={{
+      color: 'primary',
+      children: 'Primary',
+      variant: 'filled',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="filled-secondary"
+    args={{
+      color: 'secondary',
+      children: 'Secondary',
+      variant: 'filled',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="filled-success"
+    args={{
+      color: 'success',
+      children: 'Success',
+      variant: 'filled',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="filled-error"
+    args={{
+      color: 'error',
+      children: 'Error',
+      variant: 'filled',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="filled-warn"
+    args={{
+      color: 'warn',
+      children: 'Warn',
+      variant: 'filled',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+__Outlined__
+
+<Canvas>
+  <Story
+    name="outlined-primary"
+    args={{
+      color: 'primary',
+      children: 'Primary',
+      variant: 'outlined',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="outlined-secondary"
+    args={{
+      color: 'secondary',
+      children: 'Secondary',
+      variant: 'outlined',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="outlined-success"
+    args={{
+      color: 'success',
+      children: 'Success',
+      variant: 'outlined',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="outlined-error"
+    args={{
+      color: 'error',
+      children: 'Error',
+      variant: 'outlined',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="outlined-warn"
+    args={{
+      color: 'warn',
+      children: 'Warn',
+      variant: 'outlined',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+```jsx dark
+import { FC } from 'react'
+import { Button } from '@/design/ui'
+
+const Example: FC = () => {
+  return (
+    <div>
+      {/* ...code */}
+      <Button component="a" color="secondary" variant="outlined" href="#">
+        Anchor example
+      </Button>
+    </div>
+  )
+}
+```
