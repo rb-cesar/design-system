@@ -5,6 +5,7 @@ import { Button } from './design/ui'
 import { createTheme, GlobalStyle, GlobalCSS } from './design/system'
 
 import img from './assets/react.svg'
+import Input from './design/ui/input'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -33,6 +34,13 @@ function App() {
         <Button color="primary" variant="filled" onClick={handleIncrement}>
           Count: {count}
         </Button>
+        <Input
+          counter
+          label="Name"
+          maxLength={128}
+          startAdornment={<span>R$ </span>}
+          endAdornment={<span>MS</span>}
+        />
       </div>
     </ThemeProvider>
   )

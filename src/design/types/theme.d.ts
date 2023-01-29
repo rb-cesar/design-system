@@ -1,5 +1,7 @@
 export type ColorSchema = 'light' | 'dark' | 'main'
 
+export type ColorTheme = keyof Omit<Palette, 'grey' | 'text'>
+
 export type ColorByTheme = {
   [K in ColorSchema]: string
 }

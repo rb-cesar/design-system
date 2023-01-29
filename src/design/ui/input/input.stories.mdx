@@ -1,0 +1,104 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'
+import { FaUserAlt, FaJsSquare } from 'react-icons/fa'
+
+import Input from './input'
+
+# Input
+
+<Meta
+  title="design/input"
+  component={Input}
+  parameters={{
+    docs: {
+      source: { state: 'open' },
+    },
+  }}
+  argTypes={{
+    label: {
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    placeholder: {
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    maxLength: {
+      table: {
+        type: { summary: 'number' },
+      },
+      control: 'number',
+      defaultValue: 128,
+      description: 'Limits the number of characters in the field',
+    },
+    counter: {
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: 'false',
+      },
+      control: 'boolean',
+      defaultValue: true,
+      description: '',
+    },
+    fullWidth: {
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: 'false',
+      },
+      control: 'boolean',
+      defaultValue: false,
+      description: 'Occupies the entire width of the parent element',
+    },
+    focusColor: {
+      table: {
+        type: { summary: '"primary" | "secondary" | "success" | "error" | "warn" | "background"' },
+        defaultValue: 'false',
+      },
+      control: 'select',
+      options: ['primary', 'secondary', 'success', 'error', 'warn'],
+      defaultValue: 'primary',
+      description: 'Palette color option for input focus',
+    },
+    startAdornment: {
+      table: {
+        type: {
+          summary:
+            'ReactElement | string | number | ReactFragment | ReactPortal | boolean | null | undefined',
+        },
+      },
+      control: {
+        type: null,
+      },
+    },
+    endAdornment: {
+      table: {
+        type: {
+          summary:
+            'ReactElement | string | number | ReactFragment | ReactPortal | boolean | null | undefined',
+        },
+      },
+      control: {
+        type: null,
+      },
+    },
+  }}
+/>
+
+export const Template = args => <Input {...args} />
+
+<Canvas>
+  <Story
+    name="input"
+    args={{
+      label: 'Username',
+      placeholder: 'Anonymous',
+      startAdornment: <FaUserAlt size={14} />,
+      endAdornment: <FaJsSquare size={14} />,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="input" />

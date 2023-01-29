@@ -25,8 +25,8 @@ export const defaultPalette: Palette = {
     luminance: (lum: number) => calculateLuminance('#f8e200', lum),
   },
   background: {
-    main: '#242424',
-    luminance: (lum: number) => calculateLuminance('#242424', lum),
+    main: '#ffffff',
+    luminance: (lum: number) => calculateLuminance('#ffffff', lum),
   },
   text: {
     primary: '#efefef',
