@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { css, Theme } from '@emotion/react'
+import { Theme } from '@emotion/react'
 
 import { ModelComponent } from '@/design/system'
 import { DynamicProps, TagType } from '@/design/types'
@@ -11,7 +11,7 @@ type BtnCls = {
 
 export type ColorTheme = keyof Omit<Theme['palette'], 'grey' | 'text'>
 
-export type VariantTheme = 'filled' | 'outlined'
+export type VariantTheme = 'filled' | 'outlined' | 'text'
 
 export type ButtonProps<T extends TagType> = Omit<DynamicProps<T>, 'color'> & {
   color?: ColorTheme
@@ -60,6 +60,15 @@ const StyledButton = styled(ModelComponent)<{ color: ColorTheme }>`
   &.outlined {
     color: ${({ theme, color }) => theme.palette[color].main};
     border: 1px solid ${({ theme, color }) => theme.palette[color].main};
+    background-color: transparent;
+
+    :hover {
+      background-color: ${({ theme, color }) => theme.palette[color].main + '22'};
+    }
+  }
+
+  &.text {
+    color: ${({ theme, color }) => theme.palette[color].main};
     background-color: transparent;
 
     :hover {

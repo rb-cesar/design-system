@@ -12,6 +12,7 @@ export const Template = args => <Button {...args} />
     name="button"
     args={{
       color: 'primary',
+      component: 'button',
       children: 'Button',
       variant: 'filled',
     }}
@@ -29,6 +30,7 @@ __Filled__
     name="filled-primary"
     args={{
       color: 'primary',
+      component: 'button',
       children: 'Primary',
       variant: 'filled',
     }}
@@ -39,6 +41,7 @@ __Filled__
     name="filled-secondary"
     args={{
       color: 'secondary',
+      component: 'button',
       children: 'Secondary',
       variant: 'filled',
     }}
@@ -49,6 +52,7 @@ __Filled__
     name="filled-success"
     args={{
       color: 'success',
+      component: 'button',
       children: 'Success',
       variant: 'filled',
     }}
@@ -59,6 +63,7 @@ __Filled__
     name="filled-error"
     args={{
       color: 'error',
+      component: 'button',
       children: 'Error',
       variant: 'filled',
     }}
@@ -69,6 +74,7 @@ __Filled__
     name="filled-warn"
     args={{
       color: 'warn',
+      component: 'button',
       children: 'Warn',
       variant: 'filled',
     }}
@@ -84,6 +90,7 @@ __Outlined__
     name="outlined-primary"
     args={{
       color: 'primary',
+      component: 'button',
       children: 'Primary',
       variant: 'outlined',
     }}
@@ -94,6 +101,7 @@ __Outlined__
     name="outlined-secondary"
     args={{
       color: 'secondary',
+      component: 'button',
       children: 'Secondary',
       variant: 'outlined',
     }}
@@ -104,6 +112,7 @@ __Outlined__
     name="outlined-success"
     args={{
       color: 'success',
+      component: 'button',
       children: 'Success',
       variant: 'outlined',
     }}
@@ -114,6 +123,7 @@ __Outlined__
     name="outlined-error"
     args={{
       color: 'error',
+      component: 'button',
       children: 'Error',
       variant: 'outlined',
     }}
@@ -124,8 +134,69 @@ __Outlined__
     name="outlined-warn"
     args={{
       color: 'warn',
+      component: 'button',
       children: 'Warn',
       variant: 'outlined',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+__Text__
+
+<Canvas>
+  <Story
+    name="text-primary"
+    args={{
+      color: 'primary',
+      component: 'button',
+      children: 'Primary',
+      variant: 'text',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="text-secondary"
+    args={{
+      color: 'secondary',
+      component: 'button',
+      children: 'Secondary',
+      variant: 'text',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="text-success"
+    args={{
+      color: 'success',
+      component: 'button',
+      children: 'Success',
+      variant: 'text',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="text-error"
+    args={{
+      color: 'error',
+      component: 'button',
+      children: 'Error',
+      variant: 'text',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+  <Story
+    name="text-warn"
+    args={{
+      color: 'warn',
+      component: 'button',
+      children: 'Warn',
+      variant: 'text',
     }}
   >
     {Template.bind({})}
