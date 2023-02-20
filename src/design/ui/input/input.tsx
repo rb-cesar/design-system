@@ -10,7 +10,7 @@ import {
 
 import { ColorTheme } from '@/design/types'
 
-import { StyledFieldset, StyledInput, StyledLabel } from './input.style'
+import { StyledInputContainer, StyledFieldset, StyledInput, StyledLabel } from './input.style'
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   label?: string
@@ -19,6 +19,8 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   focusColor?: ColorTheme
   startAdornment?: ReactNode
   endAdornment?: ReactNode
+  helperText?: ReactNode
+  helperTextColor?: ColorTheme
 }
 
 const Input: FC<InputProps> = ({
@@ -31,6 +33,8 @@ const Input: FC<InputProps> = ({
   maxLength,
   startAdornment,
   endAdornment,
+  helperText,
+  helperTextColor,
   onFocus,
   onBlur,
   onChange,
@@ -71,25 +75,28 @@ const Input: FC<InputProps> = ({
   }, [counter, counterRef])
 
   return (
-    <StyledFieldset containsLabel={!!label} fullWidth={fullWidth} focusColor={focusColor || 'primary'}>
-      {startAdornment && <div className="start-adornment">{startAdornment}</div>}
-      {label && <StyledLabel>{label}</StyledLabel>}
-      <StyledInput
-        {...props}
-        value={value}
-        defaultValue={defaultValue}
-        maxLength={maxLength}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        onChange={handleChange}
-      />
-      {counter && (
-        <span ref={counterRef} className="input-counter">
-          0/0
-        </span>
-      )}
-      {endAdornment && <div className="end-adornment">{endAdornment}</div>}
-    </StyledFieldset>
+    <StyledInputContainer fullWidth={fullWidth} helperTextColor={helperTextColor || 'warn'}>
+      <StyledFieldset containsLabel={!!label} focusColor={focusColor || 'primary'}>
+        {startAdornment && <div className="start-adornment">{startAdornment}</div>}
+        {label && <StyledLabel>{label}</StyledLabel>}
+        <StyledInput
+          {...props}
+          value={value}
+          defaultValue={defaultValue}
+          maxLength={maxLength}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          onChange={handleChange}
+        />
+        {counter && (
+          <span ref={counterRef} className="input-counter">
+            0/0
+          </span>
+        )}
+        {endAdornment && <div className="end-adornment">{endAdornment}</div>}
+      </StyledFieldset>
+      {helperText && <div className="helper-text">{helperText}</div>}
+    </StyledInputContainer>
   )
 }
 

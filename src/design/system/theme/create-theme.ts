@@ -17,12 +17,12 @@ export const defaultPalette: Palette = {
     luminance: (lum: number) => calculateLuminance('#4fdf34', lum),
   },
   error: {
-    main: '#ff2826',
-    luminance: (lum: number) => calculateLuminance('#ff2826', lum),
+    main: '#f5023b',
+    luminance: (lum: number) => calculateLuminance('#f5023b', lum),
   },
   warn: {
-    main: '#f8e200',
-    luminance: (lum: number) => calculateLuminance('#f8e200', lum),
+    main: '#f9e40d',
+    luminance: (lum: number) => calculateLuminance('#f9e40d', lum),
   },
   background: {
     main: '#ffffff',
@@ -30,7 +30,7 @@ export const defaultPalette: Palette = {
   },
   text: {
     primary: '#efefef',
-    secondary: '#efefef',
+    secondary: '#d2d2d2',
     light: '#ffffff',
     dark: '#353535',
     contrastColor: '#efefef',

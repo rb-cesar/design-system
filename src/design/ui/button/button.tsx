@@ -43,13 +43,13 @@ const StyledButton = styled(ModelComponent)<{ color: ColorTheme }>`
   outline: none;
   font-weight: 500;
   font-family: 'Poppins', sans-serif;
+  color: ${({ theme }) => theme.palette.text.light};
   border-radius: 4px;
   padding: 8px 12px;
   transition: 150ms;
   overflow: hidden;
 
   &.filled {
-    color: #fff;
     background-color: ${({ theme, color }) => theme.palette[color].main};
 
     :hover {

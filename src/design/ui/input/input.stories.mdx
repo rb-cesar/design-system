@@ -16,17 +16,20 @@ import Input from './input'
   argTypes={{
     label: {
       table: {
-        type: { summary: 'string' },
+        type: { summary: 'string | undefined' },
+        defaultValue: { summary: 'undefined' },
       },
     },
     placeholder: {
       table: {
-        type: { summary: 'string' },
+        type: { summary: 'string | undefined' },
+        defaultValue: { summary: 'undefined' },
       },
     },
     maxLength: {
       table: {
-        type: { summary: 'number' },
+        type: { summary: 'number | undefined' },
+        defaultValue: { summary: 'undefined' },
       },
       control: 'number',
       defaultValue: 128,
@@ -34,8 +37,8 @@ import Input from './input'
     },
     counter: {
       table: {
-        type: { summary: 'boolean' },
-        defaultValue: 'false',
+        type: { summary: 'boolean | undefined' },
+        defaultValue: { summary: 'false' },
       },
       control: 'boolean',
       defaultValue: true,
@@ -43,8 +46,8 @@ import Input from './input'
     },
     fullWidth: {
       table: {
-        type: { summary: 'boolean' },
-        defaultValue: 'false',
+        type: { summary: 'boolean | undefined' },
+        defaultValue: { summary: 'false' },
       },
       control: 'boolean',
       defaultValue: false,
@@ -52,11 +55,14 @@ import Input from './input'
     },
     focusColor: {
       table: {
-        type: { summary: '"primary" | "secondary" | "success" | "error" | "warn" | "background"' },
-        defaultValue: 'false',
+        type: {
+          summary:
+            '"primary" | "secondary" | "success" | "error" | "warn" | "background" | undefined',
+        },
+        defaultValue: { summary: '"primary"' },
       },
       control: 'select',
-      options: ['primary', 'secondary', 'success', 'error', 'warn'],
+      options: ['primary', 'secondary', 'success', 'error', 'warn', 'background'],
       defaultValue: 'primary',
       description: 'Palette color option for input focus',
     },
@@ -66,6 +72,7 @@ import Input from './input'
           summary:
             'ReactElement | string | number | ReactFragment | ReactPortal | boolean | null | undefined',
         },
+        defaultValue: { summary: 'undefined' },
       },
       control: {
         type: null,
@@ -77,10 +84,35 @@ import Input from './input'
           summary:
             'ReactElement | string | number | ReactFragment | ReactPortal | boolean | null | undefined',
         },
+        defaultValue: { summary: 'undefined' },
       },
       control: {
         type: null,
       },
+    },
+    helperText: {
+      table: {
+        type: {
+          summary:
+            'ReactElement | string | number | ReactFragment | ReactPortal | boolean | null | undefined',
+        },
+        defaultValue: { summary: 'undefined' },
+      },
+      control: {
+        type: null,
+      },
+    },
+    helperTextColor: {
+      table: {
+        type: {
+          summary:
+            '"primary" | "secondary" | "success" | "error" | "warn" | "background" | undefined',
+        },
+        defaultValue: { summary: '"warn"' },
+      },
+      control: 'select',
+      options: ['primary', 'secondary', 'success', 'error', 'warn', 'background'],
+      defaultValue: 'warn',
     },
   }}
 />
@@ -95,6 +127,7 @@ export const Template = args => <Input {...args} />
       placeholder: 'Anonymous',
       startAdornment: <FaUserAlt size={14} />,
       endAdornment: <FaJsSquare size={14} />,
+      helperText: <small>Helper text</small>,
     }}
   >
     {Template.bind({})}
