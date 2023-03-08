@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { css, ThemeProvider } from '@emotion/react'
 
-import { Button } from './design/ui'
 import { createTheme, GlobalStyle, GlobalCSS } from './design/system'
+import { Input, Button } from './design/ui'
+import { WysiwygEditor } from './design/api'
 
 import img from './assets/react.svg'
-import Input from './design/ui/input'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -30,7 +30,7 @@ function App() {
           gap: 12px;
         `}
       >
-        <img src={img} />
+        {/* <img src={img} />
         <Button color="primary" variant="filled" onClick={handleIncrement}>
           Count: {count}
         </Button>
@@ -40,7 +40,9 @@ function App() {
           maxLength={128}
           startAdornment={<span>R$ </span>}
           endAdornment={<span>MS</span>}
-        />
+        /> */}
+
+        <WysiwygEditor defaultValue="Content" />
       </div>
     </ThemeProvider>
   )
