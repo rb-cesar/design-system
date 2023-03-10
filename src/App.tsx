@@ -6,6 +6,7 @@ import { createTheme, GlobalStyle, GlobalCSS } from './design/system'
 
 import img from './assets/react.svg'
 import Input from './design/ui/input'
+import Select from './design/ui/select'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -41,6 +42,7 @@ function App() {
           startAdornment={<span>R$ </span>}
           endAdornment={<span>MS</span>}
         />
+        <Select></Select>
       </div>
     </ThemeProvider>
   )
