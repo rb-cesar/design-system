@@ -33,7 +33,7 @@ export const defaultPalette: Palette = {
     secondary: '#d2d2d2',
     light: '#ffffff',
     dark: '#353535',
-    contrastColor: '#efefef',
+    contrastColor: '#353535',
   },
   grey: {
     50: '#fafafa',

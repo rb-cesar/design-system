@@ -1,72 +1,102 @@
-import { useEffect, useRef } from 'react'
-import { css } from '@emotion/react'
+import { FieldsetHTMLAttributes, ReactNode, useRef, useState } from 'react'
 import Portal from '@/design/api/portal'
+import { ColorTheme } from '@/design/types'
 
-type SelectProps = Partial<
-  Pick<HTMLInputElement, 'id' | 'value' | 'defaultValue' | 'dataset' | 'multiple'>
-> & {
-  ref?: React.MutableRefObject<HTMLInputElement | null>
+import {
+  StyledFieldset,
+  StyledOverride,
+  StyledSelectContainer,
+  StyledTextBox,
+  StyledOverrideWrapper,
+} from './select.style'
+
+type ContentProps = {
+  origin: {
+    vertical: 'top' | 'bottom'
+    horizontal: 'left' | 'right'
+  }
 }
 
-const Select: React.FC<SelectProps> = ({ ref, value, defaultValue }) => {
+type SelectProps = Partial<Pick<HTMLInputElement, 'id' | 'value' | 'defaultValue' | 'dataset' | 'multiple'>> & {
+  label?: string
+  counter?: boolean
+  fullWidth?: boolean
+  focusColor?: ColorTheme
+  startAdornment?: ReactNode
+  endAdornment?: ReactNode
+  helperText?: ReactNode
+  helperTextColor?: ColorTheme
+  ref?: React.MutableRefObject<HTMLInputElement | null>
+  children?: ReactNode
+}
+
+const Select: React.FC<SelectProps> = ({
+  ref,
+  children,
+  label,
+  counter,
+  fullWidth,
+  focusColor,
+  value,
+  defaultValue,
+  // maxLength,
+  startAdornment,
+  endAdornment,
+  helperText,
+  helperTextColor,
+  // onFocus,
+  // onBlur,
+  // onChange,
+}) => {
   const fieldsetRef = useRef<HTMLFieldSetElement>(null)
-  const cardRef = useRef<HTMLDivElement>(null)
+  const overrideRef = useRef<HTMLDivElement>(null)
 
-  function handleResize() {
-    if (!(fieldsetRef.current && cardRef.current)) return
+  const [selectValue, setSelectValue] = useState(value || defaultValue)
+  const [showOverride, setShowOverride] = useState(false)
 
-    const fieldsetRect = fieldsetRef.current.getBoundingClientRect()
-    const margin = 16
+  const fieldsetRect = fieldsetRef.current?.getBoundingClientRect()
 
-    cardRef.current.style.top = fieldsetRect.top + margin + 'px'
-    cardRef.current.style.left = fieldsetRect.left + 'px'
+  function handleOpenOverride(ev: any) {
+    ev?.stopPropagation()
+    setShowOverride(true)
   }
 
-  useEffect(() => {
-    handleResize()
-    window.addEventListener('load', handleResize)
-    window.addEventListener('resize', handleResize)
-    
-    return () => {
-      window.removeEventListener('load', handleResize)
-      window.removeEventListener('resize', handleResize)
+  function handleCloseOverride(ev: any) {
+    ev?.stopPropagation()
+
+    if (overrideRef.current === ev.target) {
+      setShowOverride(false)
     }
-  }, [fieldsetRef, cardRef])
+  }
+
+  function handleSelect() {}
 
   return (
-    <div>
-      <fieldset ref={fieldsetRef}>
-        <input ref={ref} value={value} defaultValue={defaultValue} hidden />
-      </fieldset>
-      <Portal passport="select-root">
-        <div
-          css={css`
-            position: absolute;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-          `}
-        >
-          <div
-            ref={cardRef}
-            css={css`
-              position: absolute;
-              top: 0;
-              left: 0;
-              transform: translate(-50%, -50%);
-              padding: 8px;
-              border-radius: 4px;
-              color: #fff;
-              background-color: #42d;
-            `}
-          >
-            <h2>OK</h2>
-          </div>
-        </div>
-      </Portal>
-    </div>
+    <StyledSelectContainer helperTextColor={helperTextColor || 'warn'}>
+      <StyledFieldset ref={fieldsetRef} focusColor={focusColor || 'primary'}>
+        <StyledTextBox onClick={handleOpenOverride}>{selectValue}</StyledTextBox>
+        <input ref={ref} value={selectValue} defaultValue={defaultValue} hidden />
+      </StyledFieldset>
+      {showOverride && (
+        <Portal passport="select-root">
+          <StyledOverride ref={overrideRef} onClick={handleCloseOverride}>
+            <StyledOverrideWrapper
+              width={fieldsetRect?.width || 'max-content'}
+              position={{
+                x: fieldsetRect?.left || 0,
+                y: fieldsetRect?.bottom || 0,
+              }}
+              origin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+            >
+              {children || <span>No Content</span>}
+            </StyledOverrideWrapper>
+          </StyledOverride>
+        </Portal>
+      )}
+    </StyledSelectContainer>
   )
 }
 

@@ -1,0 +1,54 @@
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'
+import Select from './select'
+
+<Meta
+  title="design/select"
+  component={Select}
+  parameters={{
+    docs: {
+      source: { state: 'open' },
+    },
+  }}
+  argTypes={{
+    value: {
+      table: {
+        type: { summary: 'string | number | undefined | null' },
+        defaultValue: { summary: 'undefined' },
+      },
+    },
+    defaultValue: {
+      table: {
+        type: { summary: 'string | number | undefined | null' },
+        defaultValue: { summary: 'undefined' },
+      },
+    },
+    children: {
+      table: {
+        type: {
+          summary: 'ReactElement | string | number | ReactFragment | ReactPortal | boolean | null | undefined',
+        },
+        defaultValue: { summary: 'undefined' },
+      },
+      control: {
+        type: null,
+      },
+    },
+  }}
+/>
+
+export const Template = args => <Select {...args} />
+
+<Canvas>
+  <Story
+    name="select"
+    args={{
+      value: 'Username',
+      defaultValue: 'Name',
+      children: <span>Element</span>,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="select" />
