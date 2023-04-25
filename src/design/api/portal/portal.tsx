@@ -29,7 +29,7 @@ const Portal: FC<PropsWithChildren<PortalProps>> = ({ children, passport }) => {
 
       try {
         if (portalEl) {
-          document.removeChild(portalEl)
+          document.body.removeChild(portalEl)
         }
       } catch {}
     }

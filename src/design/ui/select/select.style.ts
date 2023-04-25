@@ -15,10 +15,6 @@ type CardOptionsProps = {
     x: string | number
     y: string | number
   }
-  origin: {
-    vertical: 'top' | 'bottom'
-    horizontal: 'left' | 'right'
-  }
 }
 
 export const StyledSelectContainer = styled.div<Omit<StyledInputContainerProps, 'focusColor'>>`
@@ -30,17 +26,13 @@ export const StyledSelectContainer = styled.div<Omit<StyledInputContainerProps, 
       margin-left: 8px;
     }
 
-    input {
-      width: 'max-content';
-    }
-
     ${fullWidth &&
     css`
       width: 100%;
 
-      fieldset,
-      input {
+      fieldset {
         width: 100%;
+        max-width: 100%;
       }
     `}
 
@@ -48,14 +40,6 @@ export const StyledSelectContainer = styled.div<Omit<StyledInputContainerProps, 
     css`
       margin-top: 20px;
     `}
-
-    .input-counter {
-      position: absolute;
-      right: 4px;
-      bottom: -1px;
-      color: ${palette.grey[600]};
-      font-size: 10px;
-    }
 
     .start-adornment,
     .end-adornment {
@@ -90,8 +74,10 @@ export const StyledFieldset = styled.fieldset<Omit<StyledInputContainerProps, 'f
     align-items: center;
     gap: ${spacing(0.5)};
 
-    width: max-content;
-    padding: ${spacing()};
+    width: 280px;
+    height: 42px;
+    max-width: 280px;
+    padding: ${spacing(1)};
     color: ${palette.grey[600]};
     border: ${`1px solid ${palette.grey[400]}`};
     border-radius: 4px;
@@ -115,14 +101,6 @@ export const StyledFieldset = styled.fieldset<Omit<StyledInputContainerProps, 'f
       outline-color: ${palette[focusColor].main};
       background-color: ${palette[focusColor].main}08;
     }
-
-    .input-counter {
-      position: absolute;
-      right: 4px;
-      bottom: -1px;
-      color: ${palette.grey[600]};
-      font-size: 10px;
-    }
   `}
 `
 
@@ -139,9 +117,17 @@ export const StyledLabel = styled.label`
 `
 
 export const StyledTextBox = styled.span`
-  ${() => css`
-    min-width: 181px;
+  ${({ theme: { spacing } }) => css`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: ${spacing()};
+    width: 100%;
     min-height: 16px;
+    overflow: hidden;
+    padding: ${spacing(0.5)};
+    outline: none !important;
+    white-space: nowrap;
     cursor: pointer;
   `}
 `
@@ -157,14 +143,14 @@ export const StyledOverride = styled.div`
   `}
 `
 
-export const StyledOverrideWrapper = styled.div<CardOptionsProps>`
-  ${({ width, position: { x, y }, theme: { palette, spacing } }) => css`
+export const StyledOverrideWrapper = styled.ul<CardOptionsProps>`
+  ${({ width, position: { x, y }, theme: { palette } }) => css`
     position: absolute;
     top: ${y}px;
     left: ${x}px;
     width: ${width}px;
     border-radius: 4px;
-    padding: ${spacing()};
+    overflow: hidden;
     color: ${palette.grey[500]};
     background-color: ${palette.background.main};
     box-shadow: 0 0 8px ${palette.grey[900]}44;

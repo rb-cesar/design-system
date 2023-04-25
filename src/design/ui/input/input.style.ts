@@ -71,7 +71,8 @@ export const StyledFieldset = styled.fieldset<Omit<StyledInputContainerProps, 'f
     align-items: center;
     gap: ${spacing(0.5)};
 
-    width: max-content;
+    width: 280px;
+    height: 42px;
     padding: ${spacing()};
     color: ${palette.grey[600]};
     border: ${`1px solid ${palette.grey[400]}`};
@@ -119,6 +120,7 @@ export const StyledInput = styled.input`
     font-size: 1rem;
     border: none;
     outline: none;
+    padding: ${spacing(0.5)};
     color: ${palette.grey[700]};
     border-radius: ${spacing(0.5)};
     background-color: transparent;
