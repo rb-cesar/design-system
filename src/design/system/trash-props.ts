@@ -1,4 +1,4 @@
-export function removeTrash<T extends any>(props: T): T {
+export function removeTrash<T>(props: T): T {
   const res: any = props
 
   delete res['ui']

@@ -1,16 +1,16 @@
 import {
-  ChangeEvent,
-  FC,
-  FocusEvent,
-  InputHTMLAttributes,
-  ReactNode,
+  type ChangeEvent,
+  type FC,
+  type FocusEvent,
+  type InputHTMLAttributes,
+  type ReactNode,
   useLayoutEffect,
   useRef,
 } from 'react'
 
-import { ColorTheme } from '@/design/types'
+import type { ColorTheme } from '@/design/types'
 
-import { StyledInputContainer, StyledFieldset, StyledInput, StyledLabel } from './input.style'
+import { StyledFieldset, StyledInput, StyledInputContainer, StyledLabel } from './input.style'
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   label?: string

@@ -1,6 +1,6 @@
-import { Theme } from '@emotion/react'
+import type { Theme } from '@emotion/react'
 
-import { ColorSchema, Palette } from '@/design/types'
+import type { ColorSchema, Palette } from '@/design/types'
 import { calculateLuminance } from '@/design/utils'
 
 export const defaultPalette: Palette = {

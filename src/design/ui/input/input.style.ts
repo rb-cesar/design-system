@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
-import { ColorTheme } from '@/design/types'
+import type { ColorTheme } from '@/design/types'
 
 type StyledInputContainerProps = {
   focusColor: ColorTheme
@@ -23,20 +23,24 @@ export const StyledInputContainer = styled.div<Omit<StyledInputContainerProps, '
       width: 'max-content';
     }
 
-    ${fullWidth &&
-    css`
+    ${
+      fullWidth &&
+      css`
       width: 100%;
 
       fieldset,
       input {
         width: 100%;
       }
-    `}
+    `
+    }
 
-    ${containsLabel &&
-    css`
+    ${
+      containsLabel &&
+      css`
       margin-top: 20px;
-    `}
+    `
+    }
 
     .input-counter {
       position: absolute;
@@ -63,7 +67,9 @@ export const StyledInputContainer = styled.div<Omit<StyledInputContainerProps, '
   `}
 `
 
-export const StyledFieldset = styled.fieldset<Omit<StyledInputContainerProps, 'fullWidth' | 'helperTextColor'>>`
+export const StyledFieldset = styled.fieldset<
+  Omit<StyledInputContainerProps, 'fullWidth' | 'helperTextColor'>
+>`
   ${({ theme: { palette, spacing }, focusColor }) => css`
     position: relative;
     display: flex;

@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 
 import { tags } from '@/design/system'
-import { DynamicProps, TagType } from '@/design/types'
+import type { DynamicProps, TagType } from '@/design/types'
 
 function ModelComponent<T extends TagType>(props: DynamicProps<T>, ref: any) {
   const { component, children, ...rest } = props as any

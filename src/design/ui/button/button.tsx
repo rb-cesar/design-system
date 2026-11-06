@@ -1,8 +1,8 @@
+import type { Theme } from '@emotion/react'
 import styled from '@emotion/styled'
-import { Theme } from '@emotion/react'
 
 import { ModelComponent } from '@/design/system'
-import { DynamicProps, TagType } from '@/design/types'
+import type { DynamicProps, TagType } from '@/design/types'
 
 type BtnCls = {
   variant?: string
