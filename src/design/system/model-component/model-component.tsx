@@ -1,5 +1,4 @@
 import { forwardRef } from 'react'
-import { EmotionJSX } from '@emotion/react/types/jsx-namespace'
 
 import { tags } from '@/design/system'
 import { DynamicProps, TagType } from '@/design/types'
@@ -20,7 +19,7 @@ function ModelComponent<T extends TagType>(props: DynamicProps<T>, ref: any) {
     <TagName {...rest} ref={ref}>
       {children}
     </TagName>
-  ) as EmotionJSX.Element
+  )
 }
 
 export default forwardRef(ModelComponent) as typeof ModelComponent
