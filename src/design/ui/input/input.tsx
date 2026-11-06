@@ -70,9 +70,10 @@ const Input: FC<InputProps> = ({
 
   useLayoutEffect(() => {
     if (counter && counterRef.current) {
-      counterRef.current.textContent = `${value || defaultValue || 0}/${maxLength}`
+      const currentLength = String(value ?? defaultValue ?? '').length
+      counterRef.current.textContent = `${currentLength}/${maxLength}`
     }
-  }, [counter, counterRef])
+  }, [counter, value, defaultValue, maxLength])
 
   return (
     <StyledInputContainer fullWidth={fullWidth} helperTextColor={helperTextColor || 'warn'}>
