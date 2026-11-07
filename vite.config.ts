@@ -1,13 +1,17 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
-import path from 'path'
+import { fileURLToPath } from 'node:url'
+import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vitest/config'
 
-// https://vitejs.dev/config/
+const sourceFolder = fileURLToPath(new URL('./src', import.meta.url))
+
 export default defineConfig({
-  plugins: [react({
-    jsxImportSource: '@emotion/react'
-  })],
+  plugins: [react({ jsxImportSource: '@emotion/react' })],
   resolve: {
-    alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
+    alias: { '@': sourceFolder },
+  },
+  test: {
+    environment: 'jsdom',
+    setupFiles: ['./src/test/setup-tests.ts'],
+    clearMocks: true,
   },
 })

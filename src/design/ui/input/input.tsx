@@ -1,16 +1,16 @@
 import {
-  ChangeEvent,
-  FC,
-  FocusEvent,
-  InputHTMLAttributes,
-  ReactNode,
+  type ChangeEvent,
+  type FC,
+  type FocusEvent,
+  type InputHTMLAttributes,
+  type ReactNode,
   useLayoutEffect,
   useRef,
 } from 'react'
 
-import { ColorTheme } from '@/design/types'
+import type { ColorTheme } from '@/design/types'
 
-import { StyledInputContainer, StyledFieldset, StyledInput, StyledLabel } from './input.style'
+import { StyledFieldset, StyledInput, StyledInputContainer, StyledLabel } from './input.style'
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   label?: string
@@ -70,9 +70,10 @@ const Input: FC<InputProps> = ({
 
   useLayoutEffect(() => {
     if (counter && counterRef.current) {
-      counterRef.current.textContent = `${value || defaultValue || 0}/${maxLength}`
+      const currentLength = String(value ?? defaultValue ?? '').length
+      counterRef.current.textContent = `${currentLength}/${maxLength}`
     }
-  }, [counter, counterRef])
+  }, [counter, value, defaultValue, maxLength])
 
   return (
     <StyledInputContainer fullWidth={fullWidth} helperTextColor={helperTextColor || 'warn'}>

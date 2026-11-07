@@ -1,10 +1,8 @@
-import { useState } from 'react'
 import { css, ThemeProvider } from '@emotion/react'
-
-import { Button } from './design/ui'
-import { createTheme, GlobalStyle, GlobalCSS } from './design/system'
-
+import { useState } from 'react'
 import img from './assets/react.svg'
+import { createTheme, GlobalCSS, GlobalStyle } from './design/system'
+import { Button } from './design/ui'
 import Input from './design/ui/input'
 
 function App() {
@@ -30,7 +28,7 @@ function App() {
           gap: 12px;
         `}
       >
-        <img src={img} />
+        <img src={img} alt="React logo" />
         <Button color="primary" variant="filled" onClick={handleIncrement}>
           Count: {count}
         </Button>
