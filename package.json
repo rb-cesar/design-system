@@ -15,8 +15,8 @@
     "lint:fix": "biome check --write",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
     "preview": "vite preview",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "test": "vitest run",
     "test:watch": "vitest"
   },
@@ -28,15 +28,9 @@
     "react-icons": "^4.7.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.12",
     "@biomejs/biome": "2.6.6",
-    "@storybook/addon-actions": "^6.5.15",
-    "@storybook/addon-essentials": "^6.5.15",
-    "@storybook/addon-interactions": "^6.5.15",
-    "@storybook/addon-links": "^6.5.15",
-    "@storybook/builder-vite": "^0.3.0",
-    "@storybook/react": "^6.5.15",
-    "@storybook/testing-library": "^0.0.13",
+    "@storybook/addon-docs": "^10.6.6",
+    "@storybook/react-vite": "^10.6.6",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
@@ -45,11 +39,10 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "@vitejs/plugin-react": "^6.2.1",
-    "babel-loader": "^8.3.0",
     "jsdom": "^31.0.0",
+    "storybook": "^10.6.6",
     "typescript": "~6.0.3",
     "vite": "^8.3.6",
-    "vite-tsconfig-paths": "^4.0.5",
     "vitest": "^5.1.0"
   }
 }

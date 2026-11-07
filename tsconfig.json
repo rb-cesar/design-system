@@ -17,6 +17,6 @@
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react"
   },
-  "include": ["src", "vite.config.ts"],
+  "include": ["src", ".storybook", "vite.config.ts"],
   "exclude": ["node_modules"]
 }
