@@ -1,0 +1,45 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as ButtonStories from './button.stories'
+
+<Meta of={ButtonStories} />
+
+# Button
+
+<Canvas of={ButtonStories.Playground} />
+
+<Controls of={ButtonStories.Playground} />
+
+## Filled
+
+<Canvas of={ButtonStories.Filled} />
+
+## Outlined
+
+<Canvas of={ButtonStories.Outlined} />
+
+## Text
+
+<Canvas of={ButtonStories.Text} />
+
+## As anchor
+
+The `component` prop swaps the rendered tag, so a link can look like a button.
+
+<Canvas of={ButtonStories.AsAnchor} />
+
+```jsx dark
+import { FC } from 'react'
+import { Button } from '@/design/ui'
+
+const Example: FC = () => {
+  return (
+    <div>
+      {/* ...code */}
+      <Button component="a" color="secondary" variant="outlined" href="#">
+        Anchor example
+      </Button>
+    </div>
+  )
+}
+```
