@@ -8,7 +8,6 @@ const paletteColors = ['primary', 'secondary', 'success', 'error', 'warn', 'back
 const meta = {
   title: 'design/input',
   component: Input,
-  parameters: { docs: { source: { state: 'open' } } },
   argTypes: {
     maxLength: { control: 'number', description: 'Limits the number of characters in the field' },
     counter: { control: 'boolean' },
